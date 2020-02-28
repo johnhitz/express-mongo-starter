@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 //Database
 //___________________
 // How to connect to the database either via heroku or locally
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/ohmycrud'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/myblog'
 
 // Connect to Mongo
 mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true, useUnifiedTopology: true });
@@ -43,13 +43,20 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
+/*************************************************
+Controllers
+*************************************************/
+const postsController = require('./controllers/posts_controller.js')
+console.log(`postsController is:`, postsController);
+app.use('/posts', postsController)
+
 
 //___________________
 // Routes
 //___________________
 //localhost:3000
 app.get('/' , (req, res) => {
-  res.send('Hello World!');
+  res.redirect('/posts')
 });
 
 //___________________

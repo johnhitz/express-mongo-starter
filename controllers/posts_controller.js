@@ -11,10 +11,15 @@ Presentation Routes
 *************************************************/
 // Index
 posts.get('/', (req, res) => {
-  res.render('posts/index.ejs')
+  Posts.find({}, (err, foundPosts) => {
+    console.log(foundPosts);
+    res.render('posts/index.ejs', {
+      posts: foundPosts
+    })
+  })
 })
 
-// new
+// New
 posts.get('/new', (req, res) => {
   res.render('posts/new.ejs')
 })
@@ -33,6 +38,12 @@ posts.get('/:id/edit', (req, res) => {
 /*************************************************
 Functional Routes
 *************************************************/
-
+// Create
+posts.post('/', (req, res) => {
+  console.log(`req.body is: `, req.body);
+  Posts.create(req.body, (err, newPost) => {
+    res.redirect('/posts')
+  })
+})
 
 module.exports = posts

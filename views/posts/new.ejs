@@ -5,6 +5,20 @@
   </head>
   <body>
     <%- include ('../partials/header.ejs') %>
-    new
+    <form class="" action="/posts" method="POST">
+      <label for="<title>Title</title>"></label>
+      <br>
+      <input type="text" name="title" id="title">
+      <br>
+      <label for="body">Blog Entry</label>
+      <br>
+      <textarea name="body" id="body" rows="8" cols="80"></textarea>
+      <br>
+      <label for="image">Add An Image</label>
+      <br>
+      <input type="text" name="image" id="image">
+      <br>
+      <input type="submit" name="" value="submit">
+    </form>
   </body>
 </html>

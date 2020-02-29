@@ -40,7 +40,6 @@ Functional Routes
 *************************************************/
 // Create
 posts.post('/', (req, res) => {
-  console.log(`req.body is: `, req.body);
   Posts.create(req.body, (err, newPost) => {
     res.redirect('/posts')
   })

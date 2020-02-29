@@ -5,18 +5,18 @@
   </head>
   <body>
     <%- include ('../partials/header.ejs') %>
-    <form class="" action="/posts" method="POST">
-      <label for="<title>Title</title>"></label>
+    <form class="ph5 pv3" action="/posts" method="POST">
+      <label class="fw6 for="title">Title</label>
       <br>
-      <input type="text" name="title" id="title">
+      <input class="mb3 mt1" type="text" name="title" id="title">
       <br>
-      <label for="body">Blog Entry</label>
+      <label class="fw6 for="body">Blog Entry</label>
       <br>
-      <textarea name="body" id="body" rows="8" cols="80"></textarea>
+      <textarea class="mb3 mt1" name="body" id="body" rows="8" cols="80"></textarea>
       <br>
-      <label for="image">Add An Image</label>
+      <label class="fw6 for="image">Add An Image</label>
       <br>
-      <input type="text" name="image" id="image">
+      <input class="mb3" type="text" name="image" id="image">
       <br>
       <input type="submit" name="" value="submit">
     </form>

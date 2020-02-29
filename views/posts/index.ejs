@@ -3,11 +3,13 @@
   <head>
     <%- include ('../partials/head.ejs') %>
   </head>
-  <body>
+  <body class="pa3">
     <%- include ('../partials/header.ejs') %>
-    <% posts.forEach((post, i) => { %>
-      <li><%= post.title %></li>
-      <li><%= post.body %></li>
-    <% }) %>
+    <ul class="list">
+      <% posts.forEach((post, i) => { %>
+        <li class="pa3 f1 fw5"><%= post.title %></li>
+        <li class="pa3"><%= post.body %></li>
+      <% }) %>
+    </ul>
   </body>
 </html>

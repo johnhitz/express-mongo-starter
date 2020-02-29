@@ -47,7 +47,6 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 Controllers
 *************************************************/
 const postsController = require('./controllers/posts_controller.js')
-console.log(`postsController is:`, postsController);
 app.use('/posts', postsController)
 
 

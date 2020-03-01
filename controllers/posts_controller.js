@@ -11,19 +11,14 @@ Presentation Routes
 *************************************************/
 // Index
 posts.get('/', (req, res) => {
-  console.log(req.query.tag);
   if(Object.entries(req.query).length === 0 && req.query.constructor === Object ) {
-    console.log("That's all folks!");
     Posts.find({}, (err, foundPosts) => {
-      // console.log(foundPosts);
       res.render('posts/index.ejs', {
         posts: foundPosts
       })
     })
   } else {
-    console.log('Try and match that!');
     Posts.find({tags: req.query.tag}, (err, foundPosts) => {
-      // console.log(foundPosts);
       res.render('posts/index.ejs', {
         posts: foundPosts
       })
@@ -38,7 +33,11 @@ posts.get('/new', (req, res) => {
 
 // Show
 posts.get('/:id', (req, res) => {
-  res.render('posts/show.ejs')
+  Posts.findById(req.params.id, (err, foundPost) => {
+    res.render('posts/show.ejs', {
+      post: foundPost
+    })
+  })
 })
 
 

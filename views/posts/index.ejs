@@ -10,12 +10,6 @@
         <li class="ph3 pt5 f1 fw5"><a href="/posts/<%= post.id %>"><%= post.title %></a></li>
         <img class="pt3 pr3 fl" src="<%= post.image %>" alt="">
         <li class=""><%= post.body %></li>
-        <button class="fl mt1 mr1 ml3" type="button" name="button"><a class="link black" href="/posts/<%= post.id %>/edit">Edit</a></button>
-        <form action="/posts/<%= post.id %>/?_method=DELETE" method="POST">
-          <input class="mt1" type="submit" name="" value="Delete">
-        </form>
-
-
       <% }) %>
     </ul>
   </body>

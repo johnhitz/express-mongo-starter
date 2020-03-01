@@ -12,7 +12,7 @@ Presentation Routes
 // Index
 posts.get('/', (req, res) => {
   Posts.find({}, (err, foundPosts) => {
-    console.log(foundPosts);
+    // console.log(foundPosts);
     res.render('posts/index.ejs', {
       posts: foundPosts
     })
@@ -44,7 +44,19 @@ Functional Routes
 *************************************************/
 // Create
 posts.post('/', (req, res) => {
+  let tagsArr = []
+  if(req.body.tech === 'on') {
+    tagsArr.push('tech')
+  }
+  if(req.body.musings === 'on') {
+    tagsArr.push('musings')
+  }
+  if(req.body.recipes === "on") {
+    tagsArr.push('recipes')
+  }
+  req.body.tags = tagsArr
   Posts.create(req.body, (err, newPost) => {
+    console.log(err);
     res.redirect('/posts')
   })
 })

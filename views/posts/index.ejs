@@ -3,12 +3,19 @@
   <head>
     <%- include ('../partials/head.ejs') %>
   </head>
-  <body class="pa3">
+  <body class="pa5">
     <%- include ('../partials/header.ejs') %>
     <ul class="list">
       <% posts.forEach((post, i) => { %>
-        <li class="pa3 f1 fw5"><%= post.title %></li>
-        <li class="pa3"><%= post.body %></li>
+        <li class="ph3 pt5 f1 fw5"><a href="/posts/<%= post.id %>"><%= post.title %></a></li>
+        <img class="pt3 pr3 fl" src="<%= post.image %>" alt="">
+        <li class=""><%= post.body %></li>
+        <button class="fl mr1" type="button" name="button"><a class="link black" href="/posts/<%= post.id %>">Edit</a></button>
+        <form action="/posts/<%= post.id %>/?_method=DELETE" method="POST">
+          <input type="submit" name="" value="Delete">
+        </form>
+
+
       <% }) %>
     </ul>
   </body>

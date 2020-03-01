@@ -5,6 +5,20 @@
   </head>
   <body>
     <%- include ('../partials/header.ejs') %>
-    hello edit
+    <form class="ph5 pv3" action="/posts/<%= post.id %>/?_method=PUT" method="POST">
+      <label class="fw6 for="title">Title</label>
+      <br>
+      <input class="mb3 mt1" type="text" name="title" id="title" value="<%= post.title %>">
+      <br>
+      <label class="fw6 for="body">Blog Entry</label>
+      <br>
+      <textarea class="mb3 mt1" name="body" id="body" rows="8" cols="80"><%= post.body %></textarea>
+      <br>
+      <label class="fw6 for="image">Add An Image</label>
+      <br>
+      <input class="mb3" type="text" name="image" id="image" value="<%= post.image %>">
+      <br>
+      <input type="submit" name="" value="submit">
+    </form>
   </body>
 </html>

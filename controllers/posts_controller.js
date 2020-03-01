@@ -31,7 +31,11 @@ posts.get('/:id', (req, res) => {
 
 // Edit
 posts.get('/:id/edit', (req, res) => {
-  res.render('posts/edit.ejs')
+  Posts.findById(req.params.id, (err, foundPost) => {
+    res.render('posts/edit.ejs', {
+      post: foundPost
+    })
+  })
 })
 
 
@@ -41,6 +45,22 @@ Functional Routes
 // Create
 posts.post('/', (req, res) => {
   Posts.create(req.body, (err, newPost) => {
+    res.redirect('/posts')
+  })
+})
+
+// Update
+posts.put('/:id', (req, res) => {
+  Posts.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    (err, foundPost) => {
+    res.redirect('/posts')
+  })
+})
+
+posts.delete('/:id', (req, res) => {
+  Posts.findByIdAndRemove(req.params.id, (err, foundPost) => {
     res.redirect('/posts')
   })
 })

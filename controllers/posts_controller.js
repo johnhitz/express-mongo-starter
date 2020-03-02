@@ -11,7 +11,8 @@ Presentation Routes
 *************************************************/
 // Index
 posts.get('/', (req, res) => {
-  Posts.find({}, (err, foundPosts) => {
+  const query = req.query
+  Posts.find(query, (err, foundPosts) => {
     res.render('posts/index.ejs', {
       posts: foundPosts
     })

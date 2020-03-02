@@ -8,8 +8,10 @@
     <ul class="list">
       <% posts.forEach((post, i) => { %>
         <li class="ph3 pt5 f1 fw5"><a href="/posts/<%= post.id %>"><%= post.title %></a></li>
-        <img class="pt3 pr3 fl" src="<%= post.image %>" alt="">
-        <li class=""><%= post.body %></li>
+        <li class="">
+          <img class="pt3 pr3 fl" src="<%= post.image %>" alt="">
+          <%= post.body %>
+        </li>
       <% }) %>
     </ul>
   </body>

@@ -11,19 +11,28 @@ Presentation Routes
 *************************************************/
 // Index
 posts.get('/', (req, res) => {
-  if(Object.entries(req.query).length === 0 && req.query.constructor === Object ) {
-    Posts.find({}, (err, foundPosts) => {
-      res.render('posts/index.ejs', {
-        posts: foundPosts
-      })
+  console.log(req.query);
+  search = req.query
+  console.log(`search is: `, search);
+  Posts.find(search, (err, foundPosts) => {
+    res.render('posts/index.ejs', {
+      posts: foundPosts,
+      query: req.query
     })
-  } else {
-    Posts.find({tags: req.query.tag}, (err, foundPosts) => {
-      res.render('posts/index.ejs', {
-        posts: foundPosts
-      })
-    })
-  }
+  })
+  // if(Object.entries(req.query).length === 0 && req.query.constructor === Object ) {
+  //   Posts.find({}, (err, foundPosts) => {
+  //     res.render('posts/index.ejs', {
+  //       posts: foundPosts
+  //     })
+  //   })
+  // } else {
+  //   Posts.find({tags: req.query.tag}, (err, foundPosts) => {
+  //     res.render('posts/index.ejs', {
+  //       posts: foundPosts
+  //     })
+  //   })
+  // }
 })
 
 // New

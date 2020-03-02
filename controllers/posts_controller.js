@@ -11,19 +11,11 @@ Presentation Routes
 *************************************************/
 // Index
 posts.get('/', (req, res) => {
-  if(Object.entries(req.query).length === 0 && req.query.constructor === Object ) {
-    Posts.find({}, (err, foundPosts) => {
-      res.render('posts/index.ejs', {
-        posts: foundPosts
-      })
+  Posts.find({}, (err, foundPosts) => {
+    res.render('posts/index.ejs', {
+      posts: foundPosts
     })
-  } else {
-    Posts.find({tags: req.query.tag}, (err, foundPosts) => {
-      res.render('posts/index.ejs', {
-        posts: foundPosts
-      })
-    })
-  }
+  })
 })
 
 // New

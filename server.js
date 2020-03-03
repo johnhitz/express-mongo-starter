@@ -6,11 +6,14 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
+const session = require('express-session')
+
 //___________________
 //Port
 //___________________
 // Allow use of Heroku's port or your own local port, depending on the environment
 const PORT = process.env.PORT || 3000;
+require('dotenv').config()
 
 //___________________
 //Database
@@ -32,6 +35,13 @@ db.on('open' , ()=>{});
 //___________________
 //Middleware
 //___________________
+app.use(
+  session({
+    secret: process.env.SECRET, //a random string do not copy this value or your stuff will get hacked
+    resave: false, // default more info: https://www.npmjs.com/package/express-session#resave
+    saveUninitialized: false // default  more info: https://www.npmjs.com/package/express-session#resave
+  })
+)
 
 //use public folder for static assets
 app.use(express.static('public'));
@@ -49,6 +59,8 @@ Controllers
 const postsController = require('./controllers/posts_controller.js')
 app.use('/posts', postsController)
 
+const sessionsController = require('./controllers/sessions_controller.js')
+app.use('/sessions', sessionsController)
 
 //___________________
 // Routes

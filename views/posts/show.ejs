@@ -10,7 +10,7 @@
       <%= post.body %>
     </div>
     <button class="fl mt1 mr1 ml3" type="button" name="button"><a class="link black" href="/posts/<%= post.id %>/edit">Edit</a></button>
-    <form action="/posts/<%= post.id %>/?_method=DELETE" method="POST">
+    <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
       <input class="mt1" type="submit" name="" value="Delete">
     </form>
   </body>

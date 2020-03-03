@@ -7,11 +7,11 @@
     <%- include ('../partials/header.ejs') %>
     <ul class="list">
       <% posts.forEach((post, i) => { %>
-        <li class="ph3 pt5 f1 fw5"><a class="db" href="/posts/<%= post.id %>"><%= post.title %></a>
-          <img class="pt3 pr3 fl" src="<%= post.image %>" alt="">
+        <li class="ph3 pt5 f1 fw5">
+          <a class="db" href="/posts/<%= post.id %>"><%= post.title %></a>
+          <img class="pt3 pr3" src="<%= post.image %>" alt="">
           <span class="f3"><%= post.body %></span>
         </li>
-        <hr>
       <% }) %>
     </ul>
   </body>

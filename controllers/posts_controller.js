@@ -5,6 +5,13 @@ const posts = express.Router()
 /*************************************************
 Authentication Middleware
 *************************************************/
+const isAuth = (req, res, next) => {
+  if (req.session.currentUser) {
+    return next()
+  } else {
+    res.redirect('/sessions/new')
+  }
+}
 
 /*************************************************
 Presentation Routes
@@ -21,14 +28,14 @@ posts.get('/', (req, res) => {
 })
 
 // New
-posts.get('/new', (req, res) => {
+posts.get('/new', isAuth, (req, res) => {
   res.render('posts/new.ejs', {
     currentUser: req.session.currentUser
   })
 })
 
 // Show
-posts.get('/:id', (req, res) => {
+posts.get('/:id', isAuth, (req, res) => {
   Posts.findById(req.params.id, (err, foundPost) => {
     res.render('posts/show.ejs', {
       post: foundPost,
@@ -39,7 +46,7 @@ posts.get('/:id', (req, res) => {
 
 
 // Edit
-posts.get('/:id/edit', (req, res) => {
+posts.get('/:id/edit', isAuth, (req, res) => {
   Posts.findById(req.params.id, (err, foundPost) => {
     res.render('posts/edit.ejs', {
       post: foundPost,
@@ -53,7 +60,7 @@ posts.get('/:id/edit', (req, res) => {
 Functional Routes
 *************************************************/
 // Create
-posts.post('/', (req, res) => {
+posts.post('/', isAuth, (req, res) => {
   let tagsArr = []
   if(req.body.tech === 'on') {
     tagsArr.push('tech')
@@ -72,7 +79,7 @@ posts.post('/', (req, res) => {
 })
 
 // Update
-posts.put('/:id', (req, res) => {
+posts.put('/:id', isAuth, (req, res) => {
   Posts.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -81,7 +88,7 @@ posts.put('/:id', (req, res) => {
   })
 })
 
-posts.delete('/:id', (req, res) => {
+posts.delete('/:id', isAuth, (req, res) => {
   Posts.findByIdAndRemove(req.params.id, (err, foundPost) => {
     res.redirect('/posts')
   })

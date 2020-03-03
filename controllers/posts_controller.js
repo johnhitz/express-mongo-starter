@@ -14,21 +14,25 @@ posts.get('/', (req, res) => {
   const query = req.query
   Posts.find(query, (err, foundPosts) => {
     res.render('posts/index.ejs', {
-      posts: foundPosts
+      posts: foundPosts,
+      currentUser: req.session.currentUser
     })
   })
 })
 
 // New
 posts.get('/new', (req, res) => {
-  res.render('posts/new.ejs')
+  res.render('posts/new.ejs', {
+    currentUser: req.session.currentUser
+  })
 })
 
 // Show
 posts.get('/:id', (req, res) => {
   Posts.findById(req.params.id, (err, foundPost) => {
     res.render('posts/show.ejs', {
-      post: foundPost
+      post: foundPost,
+      currentUser: req.session.currentUser
     })
   })
 })
@@ -38,7 +42,8 @@ posts.get('/:id', (req, res) => {
 posts.get('/:id/edit', (req, res) => {
   Posts.findById(req.params.id, (err, foundPost) => {
     res.render('posts/edit.ejs', {
-      post: foundPost
+      post: foundPost,
+      currentUser: req.session.currentUser
     })
   })
 })

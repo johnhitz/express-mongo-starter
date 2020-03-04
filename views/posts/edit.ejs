@@ -3,7 +3,7 @@
   <head>
     <%- include ('../partials/head.ejs') %>
   </head>
-  <body>
+  <body class="pa5">
     <%- include ('../partials/header.ejs') %>
     <form class="ph5 pv3" action="/posts/<%= post.id %>/?_method=PUT" method="POST">
       <label class="fw6 for="title">Title</label>

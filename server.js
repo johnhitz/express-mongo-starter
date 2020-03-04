@@ -62,6 +62,9 @@ app.use('/posts', postsController)
 const sessionsController = require('./controllers/sessions_controller.js')
 app.use('/sessions', sessionsController)
 
+const usersConrtoller = require('./controllers/users_controller.js')
+app.use('/users', usersConrtoller)
+
 //___________________
 // Routes
 //___________________

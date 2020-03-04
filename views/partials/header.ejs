@@ -8,7 +8,7 @@
     <a class="link ph3 dim" href="/posts/?tags=recipes">Recipes</a>
     <% if (currentUser) { %>
       <form class="fr mh1" action="/sessions?_method=DELETE" method="POST">
-        <input class="" type="submit" name="" value="Log Out">
+        <input class="ba bw0 bg-white blue dim" type="submit" name="" value="Log Out">
       </form>
       <span class="fr mh1">Welcome <%= currentUser.username %></span>
     <% } else { %>

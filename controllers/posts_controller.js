@@ -19,12 +19,17 @@ Presentation Routes
 // Index
 posts.get('/', (req, res) => {
   const query = req.query
-  Posts.find(query, (err, foundPosts) => {
-    res.render('posts/index.ejs', {
-      posts: foundPosts,
-      currentUser: req.session.currentUser
+  if(query === { tags: 'tech' } || { tags: 'musings' } || { tags: recipes } || {}) {
+    console.log(query);
+    Posts.find(query, (err, foundPosts) => {
+      res.render('posts/index.ejs', {
+        posts: foundPosts,
+        currentUser: req.session.currentUser
+      })
     })
-  })
+  } else {
+    log(query)
+  }
 })
 
 // New

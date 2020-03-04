@@ -1,19 +1,19 @@
-<header>
-  <nav class="pl3">
+<header class="">
+  <nav class=" pl3">
     <!-- <a class="db dtc-l v-mid mid-gray link dim w-100 w-25-l tc tl-l mb2 mb0-l" href="/">Blog203</a> -->
     <a class="f3 f1-m f-headline-l pr3 dim" href="/">Blog203</a>
-    <a class="link ph3 dim" href="/posts/new">New Post</a>
-    <a class="link ph3 dim" href="/posts/?tags=tech">Tech</a>
-    <a class="link ph3 dim" href="/posts/?tags=musings">Musings</a>
-    <a class="link ph3 dim" href="/posts/?tags=recipes">Recipes</a>
+    <a class="link dark-blue ph3 dim" href="/posts/new">New Post</a>
+    <a class="link dark-blue ph3 dim" href="/posts/?tags=tech">Tech</a>
+    <a class="link dark-blue ph3 dim" href="/posts/?tags=musings">Musings</a>
+    <a class="link dark-blue ph3 dim" href="/posts/?tags=recipes">Recipes</a>
     <% if (currentUser) { %>
       <form class="fr mh1" action="/sessions?_method=DELETE" method="POST">
-        <input class="ba bw0 bg-white blue dim" type="submit" name="" value="Log Out">
+        <input class="link dark-blue bw0 bg-white dim" type="submit" name="" value="Log Out">
       </form>
       <span class="fr mh1">Welcome <%= currentUser.username %></span>
     <% } else { %>
-      <a class="link fr dim ph1" href="/users/new">Sign Up</a>
-      <a class="link fr dim ph1" href="/sessions/new">Log In</a>
+      <a class="link dark-blue fr dim ph1" href="/users/new">Sign Up</a>
+      <a class="link dark-blue fr dim ph1" href="/sessions/new">Log In</a>
     <% } %>
   </nav>
 </header>

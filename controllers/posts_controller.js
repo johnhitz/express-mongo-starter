@@ -20,40 +20,31 @@ Presentation Routes
 // Index
 posts.get('/', (req, res) => {
   const query = req.query
-  console.log("MY QUERY IS: ", query);
   let search = "{"
   if (Object.keys(query).length > 1) {
     const fields = Object.entries(query)
-    console.log('specific');
     fields.forEach(field => {
       const key = field[0]
       const value = field[1]
       // const segment = `{ "${key}": { "$regex": "/${value}/", "$options": "i" }}`
       search += `"${key}": { "$regex": "${value}", "$options": "i"},`
-      // search = segment
 
-      // console.log("Segment is: ", segment);
     })
-    /************************************************
-    This string works:
-    { title: { $regex: 'Newly Edited', $options: 'i'}}
-    ************************************************/
 
-    console.log("**********************************************");
+
+
     search = search.slice(0, -1)
     search += "}"
-    console.log(search);
+
     search = JSON.parse(search)
   Posts.find(search, (err, foundPosts) => {
       console.log("Errors are: ", err);
-      // res.send(foundPosts)
       res.render('posts/index.ejs', {
         posts: foundPosts,
         currentUser: req.session.currentUser
       })
     })
   } else {
-    console.log(`short`);
     Posts.find(query, (err, foundPosts) => {
       res.render('posts/index.ejs', {
         posts: foundPosts,

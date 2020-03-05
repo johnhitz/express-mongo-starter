@@ -13,7 +13,9 @@
           <img class="pt3 pr3" src="<%= post.image %>" alt="">
           <span class="f3"><%= post.body %></span>
           <br>
-          <span class="f4"><%= post.updatedAt %></span>
+          <span class="f3 ph4">Tags: <%= post.tags %></span>
+          <br>
+          <span class="f4"><%= posts.updatedAt %></span>
         </li>
       <% }) %>
     </ul>

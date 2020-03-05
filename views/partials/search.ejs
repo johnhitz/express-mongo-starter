@@ -4,25 +4,18 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
-    <form class="fr flex flex-column" action="/posts" method="GET">
-      <div class="pb1">
-        <input type="text" name="search" value="">
-        <input type="submit" name="" value="search">
-      </div>
-      <div class="">
-          <span class="fl">Limit search to:</span>
-          <span class="flex flex-column">
-            <span class="ph1 fr">
-              <input class="" type="radio" name="title" value="">
-              <label class for="title">Title Only</label>
-            </span>
-            <span class="ph1 fr">
-              <input class="" type="radio" name="body" value="">
-              <label class for="body">Body Only</label>
-            </span>
-          </span>
-      </div>
-    </form>
+  <body class='debug'>
+    <div class="bg-red">
+      <form class="fr flex flex-column " action="/posts" method="GET">
+        <span class="flex-row justify-end">
+          <input class="ph1" id="body" type="text" name="body" value="" placeholder="body">
+          <input class="" type="submit" name="" value="search">
+        </span>
+        <span class="flex">
+          <input class="ph1" id="tag" type="text" name="tags" value="" placeholder="tag">
+          <input class="" type="text" id="title" name="title" value="" placeholder="title"> <br>
+        </span>
+      </form>
+    </div>
   </body>
 </html>

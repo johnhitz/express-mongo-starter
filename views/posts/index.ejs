@@ -12,6 +12,8 @@
           <a class="db" href="/posts/<%= post.id %>"><%= post.title %></a>
           <img class="pt3 pr3" src="<%= post.image %>" alt="">
           <span class="f3"><%= post.body %></span>
+          <br>
+          <span class="f4"><%= post.updatedAt %></span>
         </li>
       <% }) %>
     </ul>

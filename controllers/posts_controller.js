@@ -26,7 +26,6 @@ posts.get('/', (req, res) => {
     fields.forEach(field => {
       const key = field[0]
       const value = field[1]
-      // const segment = `{ "${key}": { "$regex": "/${value}/", "$options": "i" }}`
       search += `"${key}": { "$regex": "${value}", "$options": "i"},`
 
     })
@@ -52,18 +51,6 @@ posts.get('/', (req, res) => {
       })
     })
   }
-
-
-  // if(query === { tags: 'tech' } || { tags: 'musings' } || {  tags: recipes } || {}) {
-  //   Posts.find(query, (err, foundPosts) => {
-  //     res.render('posts/index.ejs', {
-  //       posts: foundPosts,
-  //       currentUser: req.session.currentUser
-  //     })
-  //   })
-  // } else {
-  //   log(query)
-  // }
 })
 
 // New
